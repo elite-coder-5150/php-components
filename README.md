@@ -1,1 +1,1 @@
-# This is documentation for the php com9ponent library
+# This is documentation for the php component library
