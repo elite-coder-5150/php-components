@@ -1,4 +1,11 @@
 <?php
+    /**
+     * PDO DATABASE class
+     * connects to the database using pdo
+     *  creates prepared statements
+     *  binds parmas to values
+     * returns rows and results
+     */
     class Database {
         private $host = DB_HOST;
         private $user = DB_USER;
