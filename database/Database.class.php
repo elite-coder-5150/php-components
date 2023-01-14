@@ -6,7 +6,7 @@
      *  binds parmas to values
      * returns rows and results
      */
-    class Database {
+    class Database extends PDO {
         protected static $inst;
         protected static $host = 'localhost';
         protected static $db_name = 'friend-request';
