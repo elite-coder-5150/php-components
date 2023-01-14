@@ -51,6 +51,28 @@
         }
 
         public function accept($from, $to) {
-            
+            //? update status to friends
+            $sql = 'UPDATE relations SET status="friends" WHERE from=:from AND to=:to';
+
+            $query = $this->db->prepare($sql);
+            $query->execute([
+                ':from' => $from,
+                ':to' => $to
+            ]);
+
+            if ($query->rowCount() == 0) {
+                $this->error = 'Invalid frind request.';
+                return false;
+            }
+
+            $sql = 'INSERT INTO relations (from, to, status) VALUES (:from, :to, "friends")'; 
+
+            $query = $this->db->prepare($sql);
+            $query->execute([
+                ':from' => $to,
+                ':to' => $from
+            ]);
+
+            return true;
         }
     }
