@@ -118,7 +118,6 @@
         }
 
         public function block($from, $to) {
-        
             $sql = 'INSERT INTO relations (from, to, status) VALUES (from=:from, to=:to, status="blocked"';
 
             $query = $this->db->prepare($sql);
