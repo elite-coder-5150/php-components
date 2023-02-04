@@ -43,6 +43,18 @@ const DIR = 'kaylios';
     }
 })(jQuery)
 
+(($) => {
+    $.fn.following = (opts) => {
+        this.each((e) => {
+            let defaults = {},
+                settings = $.extend({}, defaults, opts),
+                elem = $(this)
+
+                user_id = $('.user-info').data('user-id'),
+                username = $('.user-info').data('username'),
+                sessionid = $('.user-info').data('session-id'),
+        })
+    }
 //? simple little search plugin
 (($) => {
     $.fn.search = (opts) => {
@@ -79,7 +91,10 @@ const DIR = 'kaylios';
             }
         })
     }
+
+    return this
 })(jQuery)
+
 //? plugin for removing favorites
 (($) => {
     $.fn.removeFav = (opts) => {
