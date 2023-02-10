@@ -52,9 +52,10 @@ const DIR = 'kaylios';
 
                 user_id = $('.user-info').data('user-id'),
                 username = $('.user-info').data('username'),
-                sessionid = $('.user-info').data('session-id'),
+                sessionid = $('.user-info').data('session-id')
         })
     }
+})(jQuery)
 //? simple little search plugin
 (($) => {
     $.fn.search = (opts) => {
@@ -94,7 +95,36 @@ const DIR = 'kaylios';
 
     return this
 })(jQuery)
+(($) => {
+    $.fn.searchByUserId = (opts) => {
+        let defaults = {},
+            settings = $.extend({}, defaults, opts),
+            elem = $(this),
+            div = $('.search'),
+            searchTerm = $('.search-term').val()
 
+        elem.on('keyup', (e) => {
+            let value = $(this).val().trim();
+
+            if (value == '') {
+                div.fadeOut(100);
+            } else if (value != '') {
+                $.ajax({
+                    url: DIR + '/ajax/requrests/search_request.php',
+                    data: { search: value, searchByUserId: searchTerm },
+                    method: 'POST',
+                    beforeSend: () => {
+                        div.html(spinnter)
+                    },
+                    success: (data) => {
+                        div.fadeIn(100);
+                        div.html(data);
+                    }
+                })
+            }
+        })
+    }
+})(jQuery);
 //? plugin for removing favorites
 (($) => {
     $.fn.removeFav = (opts) => {
@@ -120,18 +150,18 @@ const DIR = 'kaylios';
 
         return this
     }
-}
+})
 
 //? plugin for sticky.
 (($) => {
     $.fn.sticky = (opts) => {
         this.each((e) => {
             let defaults = {},
-                settings = $.extend({}, defaults, opts);,
+                settings = $.extend({}, defaults, opts),
                 elem = $(this)
 
             $(document).on('scroll', () => {
-                let top = $(this).scrollTop(),
+                let top = $(this).scrollTop()
 
                 if (top >= 285) {
                     elem.find('.home').fadeOut(100);
