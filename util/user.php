@@ -5,7 +5,7 @@
 
         public function __construct() {
             $this->db = new Database();
-            $this->id = uuid();
+            $this->id = $this->uuid();
         }
 
         public function getUsername() {
@@ -59,8 +59,10 @@
         public function generateId() {
             // Generate a random id
             //? q how to generate a random id
-            $this->id = uuid();
+            $this->id = $this->uuid();
         }
+
+       
 
         public function uuid() {
             // Generate a random id
