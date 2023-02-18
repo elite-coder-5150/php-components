@@ -85,4 +85,20 @@
             $row = $query->fetch(PDO::FETCH_ASSOC);
             return $row['COUNT(*)'];
         }
+
+        public function getContent($id) {
+            $sql = "SELECT content FROM tweets WHERE id = :id";
+            $query = $this->db->prepare($sql);
+            $query->execute([':id' => $id]);
+            $row = $query->fetch(PDO::FETCH_OBJ);
+            return $row->content;
+        }
+
+        public function getUserID($id) {
+            $sql = "SELECT user_id FROM tweets WHERE id = :id";
+            $query = $this->db->prepare($sql);
+            $query->execute([':id' => $id]);
+            $row = $query->fetch(PDO::FETCH_OBJ);
+            return $row->user_id;
+        }
     }
