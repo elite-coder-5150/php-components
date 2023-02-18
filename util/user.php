@@ -40,8 +40,9 @@
             $sql = "SELECT first_name FROM users WHERE id = :id";
             $query = $this->db->prepare($sql);
             $query->execute([':id' => $this->id]);
-            $row = $query->fetch(PDO::FETCH_ASSOC);
-            return $row['first_name'];
+            // $row = $query->fetch(PDO::FETCH_ASSOC);
+            $row = $query->fetch(PDO::FETCH_OBJ);
+            return $row->first_name;
         }
 
         public function getLastName() {
