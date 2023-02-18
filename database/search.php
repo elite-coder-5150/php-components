@@ -77,7 +77,7 @@ class Search {
         echo "<div class='people-search'>";
             while($row = $query->fetch(PDO::FETCH_ASSOC)) {
                 $comment = new Comment($row['id'], $row['post_id'], $row['user_id'], $row['content'], $row['created_at']);
-                echo "<a href='post.php?id=" . $comment->getPostId() . "'>" . $comment->getContent() . "</a>";
+                echo "<a href='post.php?id=" . $comment->getPostId() . "'>" . $comment->getContent($value, $comment) . "</a>";
             }
     }
 
