@@ -17,4 +17,12 @@
             $row = $query->fetch(PDO::FETCH_ASSOC);
             return $row['content'];
         }
+
+        public function getPostId() {
+            $sql = "SELECT post_id FROM comments WHERE post_id = :post_id";
+            $query = $this->db->prepare($sql);
+            $query->execute([':post_id' => $this->post_id]);
+            $row = $query->fetch(PDO::FETCH_ASSOC);
+            return $row['post_id'];
+        }
     }
