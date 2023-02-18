@@ -21,4 +21,24 @@
                 echo 'Connection Error: '.$e->getMessage();
             }
         }
+
+        public function createDatabase($db_name) {
+            $sql = "CREATE DATABASE IF NOT EXISTS $db_name";
+            $query = self::$inst->prepare($sql);
+            $query->execute();
+        }
+
+        public function createTable($table_name, $fields) {
+            $sql = "CREATE TABLE IF NOT EXISTS $table_name ($fields)";
+            $query = self::$inst->prepare($sql);
+            $query->execute();
+        }
+
+        public function insert($table_name, $fields, $values) {
+            $sql = "INSERT INTO $table_name ($fields) VALUES ($values)";
+            $query = self::$inst->prepare($sql);
+            $query->execute();
+        }
+
+        
     } 
