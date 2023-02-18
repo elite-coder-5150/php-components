@@ -23,3 +23,5 @@
     2. [search by id](./docs/search-by-id.md) - a function that allows you to search for a user, group or post. of a user
 
     3. [remove-favorites](./docs/remove-favoriates.md) - simple little plugin for removing posts and people from your favirotes list.
+
+    4. [tweets](./docs/tweets.md) - a function that allows you to post a tweet.
