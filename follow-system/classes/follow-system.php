@@ -81,4 +81,8 @@
         $count = $query->rowCount();
         return $count;
     }
+
+    public function followers($get) {
+        echo '<div class="test"></div>';
+    }
 }
