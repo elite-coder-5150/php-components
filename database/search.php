@@ -87,9 +87,9 @@ class Search {
         $query->execute([':value' => $value]);
 
         echo "<div class='people-search'>";
-            while($row = $query->fetch(PDO::FETCH_ASSOC)) {
-                $tweet = new Tweet($row['id'], $row['user_id'], $row['content'], $row['created_at']);
-                echo "<a href='profile.php?id=" . $tweet->getUserId() . "'>" . $tweet->getContent() . "</a>";
+            while($row = $query->fetch(PDO::FETCH_OBJ)) {
+                $tweet = new Tweet($row->id, $row->user_id, $row->content, $row->created_at);
+                echo "<a href='profile.php?id=" . $tweet->getUserId($value) . "'>" . $tweet->getContent($row->id, $row->tweet) . "</a>";
             }
         echo "</div>";
     }
